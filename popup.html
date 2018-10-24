@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Popup</title>
+</head>
+<body>
+<button id="ping">Ping</button>
+<button id="close">Close</button>
+<script>
+    document.getElementById("ping").onclick = function() {
+        window.opener.postMessage({message: "ping", sentAt: (new Date()).toISOString()}, '*')
+    }
+    document.getElementById("close").onclick = function() {
+        window.opener.postMessage({message: "close", sentAt: (new Date()).toISOString()}, '*')
+        window.close()
+    }
+</script>
+</body>
+</html>

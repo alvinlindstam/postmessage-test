@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Base page</title>
+</head>
+<body>
+<a href="popup.html" target="_blank">Open popup</a>
+<p>Events:</p>
+<ul id="events">
+</ul>
+<script>
+    var events = document.getElementById("events")
+    function receiveMessage(message) {
+        var li = document.createElement("li")
+        li.innerText = (new Date()).toISOString() + JSON.stringify(message.data)
+        events.appendChild(li)
+    }
+    window.addEventListener("message", receiveMessage, false)
+</script>
+</body>
+</html>
